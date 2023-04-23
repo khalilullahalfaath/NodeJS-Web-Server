@@ -1,7 +1,8 @@
 const http = require('http');
  
 const requestListener = (request, response) => {
-    response.setHeader('Content-Type', 'text/html');
+    response.setHeader('Content-Type', 'application/json');
+    response.setHeader('X-Powered-By', 'NodeHs')
 
  
     
@@ -43,7 +44,9 @@ const requestListener = (request, response) => {
         }
     } else {
         response.statusCode = 404;
-        response.end('<h1>Halaman tidak ditemukan!</h1>');
+        response.end(JSON.stringify({
+            message: 'Halaman tidak ditemukan!',
+        }));
     }
  
     // const { method } = request;
